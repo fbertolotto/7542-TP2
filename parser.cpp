@@ -77,3 +77,6 @@ void FileParser::print_jumps() {
     }
 }
 
+map<int,vector<int>> FileParser::get_jumps() {
+    return this->jumps;
+}

@@ -20,4 +20,5 @@ class FileParser {
         void set_second_run();
         void second_run(string &msg);
         void print_jumps();
+        map<int,vector<int>> get_jumps();
 };
