@@ -1,10 +1,10 @@
 #include "parser.hpp"
 
-vector<string> split (string msg, string delimiter) {
+std::vector<std::string> split (std::string msg, std::string delimiter) {
     size_t init = 0, delim_pos;
-    vector<string> buffer;
-    while ((delim_pos = msg.find(delimiter, init)) != string::npos) {
-        string word = msg.substr(init, delim_pos - init);
+    std::vector<std::string> buffer;
+    while ((delim_pos = msg.find(delimiter, init)) != std::string::npos) {
+        std::string word = msg.substr(init, delim_pos - init);
         init = delim_pos + 1;
         if (word.length() == 0) continue;
         buffer.push_back(word);
@@ -13,25 +13,25 @@ vector<string> split (string msg, string delimiter) {
     return buffer;
 }
 
-void FileParser::first_run(string &msg) {
+void FileParser::first_run(std::string &msg) {
     this->line_number++;
     if (msg.length() == 0) {
         this->newlines.insert(this->line_number);
         return;
     }
-    vector<string> words = split(msg, " ");
+    std::vector<std::string> words = split(msg, " ");
     auto first = words[0];
     size_t found_label = first.find(label);
     this->line_size[line_number] = words.size();
-    if (found_label != string::npos) {
+    if (found_label != std::string::npos) {
         this->adresses[first.substr(0,first.length() - 1)] = this->line_number;
         this->line_size[this->line_number] = words.size() - 1;
     }
 }
 
-void FileParser::load_possible_jumps(vector<string> &line) {
-    for (string word : line) {
-        size_t has_comma = word.find(this->comma) != string::npos;
+void FileParser::load_possible_jumps(std::vector<std::string> &line) {
+    for (std::string word : line) {
+        size_t has_comma = word.find(this->comma) != std::string::npos;
         if (has_comma) word = word.substr(0,word.length() - 1);
 
         auto label_adress = this->adresses.find(word);
@@ -44,12 +44,12 @@ void FileParser::load_possible_jumps(vector<string> &line) {
     }  
 }
 
-void FileParser::second_run(string &msg) {
+void FileParser::second_run(std::string &msg) {
     this->line_number++;
     if (msg.length() == 0) return;
-    vector<string> words = split (msg, " ");
-    string command = (words.size() == this->line_size.find(this->line_number)->second) ? words[0] : words[1];
-    bool jump_command = command.find(jump) != string::npos;
+    std::vector<std::string> words = split (msg, " ");
+    std::string command = (words.size() == this->line_size.find(this->line_number)->second) ? words[0] : words[1];
+    bool jump_command = command.find(jump) != std::string::npos;
 
     if (command == this->ret) this->jumps[this->line_number].push_back(-1);
     else if (not jump_command || this->line_size.find(this->line_number)->second == 3) {
@@ -69,14 +69,14 @@ void FileParser::set_second_run() {
 void FileParser::print_jumps() {
     // cout << "Diccionario de posibles Saltos" << endl;
     for(auto elem : this->jumps) {
-        cout << elem.first << ": ";
+        std::cout << elem.first << ": ";
         for (size_t i = 0; i < elem.second.size(); i++) {
-            cout << elem.second[i] << " ";
+            std::cout << elem.second[i] << " ";
         }
-        cout << '\n';
+        std::cout << '\n';
     }
 }
 
-map<int,vector<int>> FileParser::get_jumps() {
+std::map<int,std::vector<int>> FileParser::get_jumps() {
     return this->jumps;
 }

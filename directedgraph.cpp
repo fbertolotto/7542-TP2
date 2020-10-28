@@ -21,19 +21,19 @@ void DirectedGraph::dfs_base() {
     this->dfs(this->graph.begin()->first);
     this->size = this->visited.size();
     if (this->loop) {
-        cout << "Loop found\n";
+        std::cout << "Loop found\n";
     } else {
-        cout << "No Loop found\n";
+        std::cout << "No Loop found\n";
     }
     if (this->size != this->graph.size()) {
-        cout << "Unused instruction\n";
+        std::cout << "Unused instruction\n";
     } else {
-        cout << "All instructions are being used\n";
+        std::cout << "All instructions are being used\n";
     }
 
 }
 
-DirectedGraph::DirectedGraph(map<int,vector<int>> &graph) {
+DirectedGraph::DirectedGraph(std::map<int,std::vector<int>> &graph) {
     this->graph = graph;
 }
 

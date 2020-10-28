@@ -3,20 +3,19 @@
 #include <string>
 #include <iterator>
 #include <bits/stdc++.h> 
-using namespace std;
 
 class DirectedGraph {
     private:
-        map<int,vector<int>> graph;
-        set<int> visited;
-        set<int> path;
+        std::map<int,std::vector<int>> graph;
+        std::set<int> visited;
+        std::set<int> path;
         bool loop;
         size_t size;
         void dfs(int actual);
         void dfs_base();
 
     public:
-        DirectedGraph(map<int,vector<int>> &graph);
+        DirectedGraph(std::map<int,std::vector<int>> &graph);
         bool find_loop();
         int get_size();
 };

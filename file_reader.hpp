@@ -3,16 +3,15 @@
 #include <string>
 #include <iterator>
 #include <bits/stdc++.h> 
-using namespace std;
 
 class FileReader {
     private:
-        ifstream file;
+        std::ifstream file;
 
     public:
-        void load_file(string file_name);
+        void load_file(std::string file_name);
         bool is_open();
         void close();
-        int read(string &buffer);
+        int read(std::string &buffer);
         void reset();
 };

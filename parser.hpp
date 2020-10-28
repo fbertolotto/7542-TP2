@@ -1,24 +1,23 @@
 #include <string>
 #include <bits/stdc++.h> 
-using namespace std;
 
 class FileParser {
     private:
-        string label = ":";
-        string jump = "j";
-        string comma = ",";
-        string ret = "ret";
+        std::string label = ":";
+        std::string jump = "j";
+        std::string comma = ",";
+        std::string ret = "ret";
         int line_number = 0;
-        map<string,int> adresses;
-        map<int,vector<int>> jumps;
-        set<int> newlines;
-        map<int,size_t> line_size;
-        void load_possible_jumps(vector<string> &line);
+        std::map<std::string,int> adresses;
+        std::map<int,std::vector<int>> jumps;
+        std::set<int> newlines;
+        std::map<int,size_t> line_size;
+        void load_possible_jumps(std::vector<std::string> &line);
 
     public:
-        void first_run(string &msg);
+        void first_run(std::string &msg);
         void set_second_run();
-        void second_run(string &msg);
+        void second_run(std::string &msg);
         void print_jumps();
-        map<int,vector<int>> get_jumps();
+        std::map<int,std::vector<int>> get_jumps();
 };
