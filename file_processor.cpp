@@ -1,5 +1,8 @@
 #include "file_processor.h"
 
+#include <map>
+#include <vector>
+
 FileProcessor::FileProcessor(FileContainer &fc, Results &rs)
     : f_container(fc), results(rs) {}
 

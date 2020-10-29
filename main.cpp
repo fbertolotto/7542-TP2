@@ -20,6 +20,11 @@ int main(int argc, char** argv) {
   for (auto thread : threads) {
     thread->join();
   }
+
+  for (auto thread : threads) {
+    delete thread;
+  }
+
   rs.show_results();
   return 0;
 }

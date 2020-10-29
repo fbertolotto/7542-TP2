@@ -1,9 +1,10 @@
-#include <bits/stdc++.h>
-
 #include <fstream>
 #include <iostream>
 #include <iterator>
+#include <map>
+#include <set>
 #include <string>
+#include <vector>
 
 class DirectedGraph {
  private:
@@ -16,7 +17,7 @@ class DirectedGraph {
   void dfs_base();
 
  public:
-  DirectedGraph(const std::map<int, std::vector<int>> &graph);
+  explicit DirectedGraph(const std::map<int, std::vector<int>> &graph);
   bool find_loop();
   bool find_unused();
 };

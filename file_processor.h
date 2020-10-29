@@ -1,3 +1,5 @@
+#include <string>
+
 #include "directedgraph.h"
 #include "file_container.h"
 #include "file_parser.h"
@@ -18,5 +20,5 @@ class FileProcessor : public Thread {
  public:
   FileProcessor(FileContainer &fc, Results &rs);
   void run() override;
-  ~FileProcessor(){};
+  ~FileProcessor() {}
 };
