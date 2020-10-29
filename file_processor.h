@@ -7,7 +7,7 @@
 #include "file_container.h"
 #include "file_parser.h"
 #include "file_reader.h"
-#include "results.h"
+#include "results_container.h"
 #include "thread.h"
 
 class FileProcessor : public Thread {
@@ -15,15 +15,28 @@ class FileProcessor : public Thread {
   FileReader f_reader;
   FileParser f_parser;
   FileContainer &f_container;
-  Results &results;
+  ResultsContainer &results;
   std::string file;
+
+  /* Ejecución principal del procesador de archivos. */
   void execute();
+
+  /* Restablece las estructuras internas previo al analisis de otro archivo. */
   void reset_all();
+
+  /* Analiza los valores obtenidos y los guarda en la clase correspondiente. */
   void analyze_results();
 
  public:
-  FileProcessor(FileContainer &fc, Results &rs);
+  /* Init del procesador de archivos, recibe un contenedor de archivos (de donde
+  obtendrá los archivos para procesar) y un contenedor de resultados (en donde
+  guardara lo obtenido). */
+  FileProcessor(FileContainer &fc, ResultsContainer &rs);
+
+  /* Funcion a ejecutar cuando se inicialice un thread con FileProcessor. */
   void run() override;
+
+  /* Destructor del procesador de archivos. */
   ~FileProcessor() {}
 };
 

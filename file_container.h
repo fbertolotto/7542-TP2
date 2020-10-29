@@ -12,9 +12,17 @@ class FileContainer {
   std::mutex m;
 
  public:
+  /* Init del contenedor de archivos. */
   FileContainer() {}
+
+  /* Agrega el nombre del archivo a una cola de archivos. */
   void add_file(std::string file_name);
+
+  /* Devuelve un nombre de archivo si la cola de estos no
+  esta vacia. */
   std::string get_file_if_not_empty();
+
+  /* Destructor del contenedor de archivos. */
   ~FileContainer() {}
 };
 

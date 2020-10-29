@@ -3,7 +3,7 @@
 #include <map>
 #include <vector>
 
-FileProcessor::FileProcessor(FileContainer &fc, Results &rs)
+FileProcessor::FileProcessor(FileContainer &fc, ResultsContainer &rs)
     : f_container(fc), results(rs) {}
 
 void FileProcessor::run() {

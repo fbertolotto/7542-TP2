@@ -1,15 +1,15 @@
-#include "results.h"
-
 #include <set>
 
-void Results::add_result(std::string name, bool loop, bool unused) {
+#include "results_container.h"
+
+void ResultsContainer::add_result(std::string name, bool loop, bool unused) {
   m.lock();
   results[name].push_back(loop);
   results[name].push_back(unused);
   m.unlock();
 }
 
-void Results::show_results() {
+void ResultsContainer::show_results() {
   std::set<std::string> keys;
   for (auto &res : results) keys.insert(res.first);
 
