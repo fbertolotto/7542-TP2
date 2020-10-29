@@ -11,9 +11,9 @@ void Results::add_result(std::string name, bool loop, bool unused) {
 
 void Results::show_results() {
   std::set<std::string> keys;
-  for (auto res : results) keys.insert(res.first);
+  for (auto &res : results) keys.insert(res.first);
 
-  for (auto key : keys) {
+  for (std::string key : keys) {
     bool loop = results[key][0];
     bool unused = results[key][1];
     if (!loop && !unused)

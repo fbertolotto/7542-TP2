@@ -1,3 +1,6 @@
+#ifndef RESULTS_H
+#define RESULTS_H
+
 #include <iostream>
 #include <mutex>
 #include <string>
@@ -10,6 +13,10 @@ class Results {
   std::mutex m;
 
  public:
+  Results() {}
   void add_result(std::string name, bool loop, bool unused);
   void show_results();
+  ~Results() {}
 };
+
+#endif  // RESULTS_H

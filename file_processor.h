@@ -1,3 +1,6 @@
+#ifndef FILE_PROCESSOR_H
+#define FILE_PROCESSOR_H
+
 #include <string>
 
 #include "directedgraph.h"
@@ -16,9 +19,12 @@ class FileProcessor : public Thread {
   std::string file;
   void execute();
   void reset_all();
+  void analyze_results();
 
  public:
   FileProcessor(FileContainer &fc, Results &rs);
   void run() override;
   ~FileProcessor() {}
 };
+
+#endif  // FILE_PROCESSOR_H

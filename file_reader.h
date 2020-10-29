@@ -1,3 +1,6 @@
+#ifndef FILE_READER_H
+#define FILE_READER_H
+
 #include <bits/stdc++.h>
 
 #include <fstream>
@@ -10,9 +13,13 @@ class FileReader {
   std::ifstream file;
 
  public:
+  FileReader() {}
   void load_file(const std::string &file_name);
   bool is_open();
   void close();
   int read(std::string &buffer);
   void reset();
+  ~FileReader() {}
 };
+
+#endif  // FILE_READER_H

@@ -1,36 +1,23 @@
 #include "directedgraph.h"
 
+#include <string>
+
 void DirectedGraph::dfs(int actual) {
   if (actual == -1) return;
-  this->visited.insert(actual);
-  if (this->path.find(actual) != this->path.end()) {
-    this->loop = true;
+  visited.insert(actual);
+  if (path.find(actual) != path.end()) {
+    loop = true;
     return;
   }
-  this->path.insert(actual);
-  for (auto neighbour : this->graph.at(actual)) {
-    this->dfs(neighbour);
-  }
+  path.insert(actual);
+  for (int &neighbour : graph.at(actual)) dfs(neighbour);
   path.erase(actual);
   return;
 }
 
 void DirectedGraph::dfs_base() {
-  this->dfs(this->graph.begin()->first);
-  this->size = this->visited.size();
-
-  /*
-      if (this->loop) {
-          std::cout << "Loop found\n";
-      } else {
-          std::cout << "No Loop found\n";
-      }
-      if (this->size != this->graph.size()) {
-          std::cout << "Unused instruction\n";
-      } else {
-          std::cout << "All instructions are being used\n";
-      }
-  */
+  dfs(graph.begin()->first);
+  size = visited.size();
 }
 
 DirectedGraph::DirectedGraph(const std::map<int, std::vector<int>> &graph) {
@@ -40,8 +27,8 @@ DirectedGraph::DirectedGraph(const std::map<int, std::vector<int>> &graph) {
 }
 
 bool DirectedGraph::find_loop() {
-  this->dfs_base();
-  return this->loop;
+  dfs_base();
+  return loop;
 }
 
-bool DirectedGraph::find_unused() { return this->size != this->graph.size(); }
+bool DirectedGraph::find_unused() { return size != graph.size(); }

@@ -1,3 +1,6 @@
+#ifndef DIRECTED_GRAPH_H
+#define DIRECTED_GRAPH_H
+
 #include <fstream>
 #include <iostream>
 #include <iterator>
@@ -20,4 +23,7 @@ class DirectedGraph {
   explicit DirectedGraph(const std::map<int, std::vector<int>> &graph);
   bool find_loop();
   bool find_unused();
+  ~DirectedGraph() {}
 };
+
+#endif  // DIRECTED_GRAPH_H
