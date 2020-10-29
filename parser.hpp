@@ -16,8 +16,8 @@ class FileParser {
   void load_possible_jumps(std::vector<std::string> &line);
 
  public:
-  void first_run(std::string &msg);
+  void first_run(const std::string &msg);
   void set_second_run();
-  void second_run(std::string &msg);
+  void second_run(const std::string &msg);
   std::map<int, std::vector<int>> get_jumps();
 };

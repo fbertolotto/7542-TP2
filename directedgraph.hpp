@@ -16,7 +16,7 @@ class DirectedGraph {
   void dfs_base();
 
  public:
-  DirectedGraph(std::map<int, std::vector<int>> &graph);
+  DirectedGraph(const std::map<int, std::vector<int>> &graph);
   bool find_loop();
   bool find_unused();
 };

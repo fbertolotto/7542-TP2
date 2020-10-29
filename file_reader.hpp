@@ -1,17 +1,18 @@
-#include <iostream>
+#include <bits/stdc++.h>
+
 #include <fstream>
-#include <string>
+#include <iostream>
 #include <iterator>
-#include <bits/stdc++.h> 
+#include <string>
 
 class FileReader {
-    private:
-        std::ifstream file;
+ private:
+  std::ifstream file;
 
-    public:
-        void load_file(std::string file_name);
-        bool is_open();
-        void close();
-        int read(std::string &buffer);
-        void reset();
+ public:
+  void load_file(const std::string file_name);
+  bool is_open();
+  void close();
+  int read(std::string &buffer);
+  void reset();
 };

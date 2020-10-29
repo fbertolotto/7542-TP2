@@ -13,7 +13,7 @@ std::vector<std::string> split(std::string msg, std::string delimiter) {
   return buffer;
 }
 
-void FileParser::first_run(std::string &msg) {
+void FileParser::first_run(const std::string &msg) {
   this->line_number++;
   if (msg.length() == 0) {
     this->newlines.insert(this->line_number);
@@ -45,7 +45,7 @@ void FileParser::load_possible_jumps(std::vector<std::string> &line) {
   }
 }
 
-void FileParser::second_run(std::string &msg) {
+void FileParser::second_run(const std::string &msg) {
   this->line_number++;
   if (msg.length() == 0) return;
   std::vector<std::string> words = split(msg, " ");
@@ -55,10 +55,10 @@ void FileParser::second_run(std::string &msg) {
           : words[1];
   bool jump_command = command.find(jump) != std::string::npos;
 
-  if (command == this->ret)
+  if (command == this->ret) {
     this->jumps[this->line_number].push_back(-1);
-  else if (not jump_command ||
-           this->line_size.find(this->line_number)->second == 3) {
+  } else if (!jump_command ||
+             this->line_size.find(this->line_number)->second == 3) {
     int aux_number = this->line_number + 1;
     while ((this->newlines.find(aux_number) != this->newlines.cend())) {
       aux_number++;

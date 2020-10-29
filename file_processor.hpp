@@ -17,5 +17,5 @@ class FileProcessor : public Thread {
 
  public:
   FileProcessor(FileContainer &fc, Results &rs);
-  virtual void run() override;
+  void run() override;
 };
