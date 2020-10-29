@@ -1,4 +1,4 @@
-#include "parser.hpp"
+#include "parser.h"
 
 std::vector<std::string> split(std::string msg, std::string delimiter) {
   size_t init = 0, delim_pos;

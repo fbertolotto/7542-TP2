@@ -1,4 +1,4 @@
-#include "file_processor.hpp"
+#include "file_processor.h"
 
 FileProcessor::FileProcessor(FileContainer &fc, Results &rs)
     : f_container(fc), results(rs) {}

@@ -1,4 +1,4 @@
-#include "directedgraph.hpp"
+#include "directedgraph.h"
 
 void DirectedGraph::dfs(int actual) {
   if (actual == -1) return;

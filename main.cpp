@@ -1,4 +1,4 @@
-#include "file_processor.hpp"
+#include "file_processor.h"
 
 int main(int argc, char** argv) {
   FileContainer files;

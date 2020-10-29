@@ -1,9 +1,9 @@
-#include "directedgraph.hpp"
-#include "file_container.hpp"
-#include "file_reader.hpp"
-#include "parser.hpp"
-#include "results.hpp"
-#include "thread.hpp"
+#include "directedgraph.h"
+#include "file_container.h"
+#include "file_reader.h"
+#include "parser.h"
+#include "results.h"
+#include "thread.h"
 
 class FileProcessor : public Thread {
  private:

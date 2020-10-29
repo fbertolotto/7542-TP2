@@ -1,4 +1,4 @@
-#include "file_reader.hpp"
+#include "file_reader.h"
 
 void FileReader::load_file(std::string file_name) {
   this->file.open(file_name);
