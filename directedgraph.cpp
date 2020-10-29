@@ -20,6 +20,8 @@ void DirectedGraph::dfs_base() {
     this->loop = false;
     this->dfs(this->graph.begin()->first);
     this->size = this->visited.size();
+
+/*
     if (this->loop) {
         std::cout << "Loop found\n";
     } else {
@@ -30,6 +32,7 @@ void DirectedGraph::dfs_base() {
     } else {
         std::cout << "All instructions are being used\n";
     }
+*/
 
 }
 
@@ -40,4 +43,8 @@ DirectedGraph::DirectedGraph(std::map<int,std::vector<int>> &graph) {
 bool DirectedGraph::find_loop() {
     this->dfs_base();
     return this->loop;
+}
+
+bool DirectedGraph::find_unused() {
+    return this->size != this->graph.size();
 }
