@@ -1,5 +1,7 @@
 #include "file_parser.h"
 
+#include <algorithm>
+
 std::vector<std::string> split(std::string msg, std::string delimiter) {
   size_t init = 0, delim_pos;
   std::vector<std::string> buffer;
@@ -29,7 +31,7 @@ void FileParser::first_run(const std::string &msg) {
   }
 }
 
-void FileParser::load_possible_jumps(std::vector<std::string> &line) {
+void FileParser::load_possible_jumps(const std::vector<std::string> &line) {
   for (std::string word : line) {
     size_t has_comma = word.find(this->comma) != std::string::npos;
     if (has_comma) word = word.substr(0, word.length() - 1);
@@ -37,8 +39,8 @@ void FileParser::load_possible_jumps(std::vector<std::string> &line) {
     auto label_adress = this->adresses.find(word);
     if (label_adress != this->adresses.end()) {
       auto possibles_jumps = this->jumps[this->line_number];
-      if (!count(possibles_jumps.begin(), possibles_jumps.end(),
-                 label_adress->second)) {
+      if (!std::count(possibles_jumps.begin(), possibles_jumps.end(),
+                      label_adress->second)) {
         this->jumps[this->line_number].push_back(label_adress->second);
       }
     }

@@ -14,7 +14,7 @@ class FileParser {
   std::map<int, std::vector<int>> jumps;
   std::set<int> newlines;
   std::map<int, size_t> line_size;
-  void load_possible_jumps(std::vector<std::string> &line);
+  void load_possible_jumps(const std::vector<std::string> &line);
 
  public:
   void first_run(const std::string &msg);
