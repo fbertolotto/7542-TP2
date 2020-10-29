@@ -1,7 +1,8 @@
 #include "file_reader.h"
 
-void FileReader::load_file(const std::string &file_name) {
+int FileReader::load_file(const std::string &file_name) {
   this->file.open(file_name);
+  return !this->file;
 }
 
 bool FileReader::is_open() { return this->file.is_open(); }

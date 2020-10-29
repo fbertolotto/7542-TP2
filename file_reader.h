@@ -14,7 +14,7 @@ class FileReader {
 
  public:
   FileReader() {}
-  void load_file(const std::string &file_name);
+  int load_file(const std::string &file_name);
   bool is_open();
   void close();
   int read(std::string &buffer);

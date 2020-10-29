@@ -9,7 +9,7 @@ FileProcessor::FileProcessor(FileContainer &fc, ResultsContainer &rs)
 void FileProcessor::run() {
   std::string file;
   while ((file = f_container.get_file_if_not_empty()) != "") {
-    f_reader.load_file(file);
+    if (f_reader.load_file(file)) return;
     this->file = file;
     execute();
   }
