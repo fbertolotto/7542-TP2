@@ -20,7 +20,7 @@ class FileContainer {
 
   /* Devuelve un nombre de archivo si la cola de estos no
   esta vacia. */
-  std::string get_file_if_not_empty();
+  std::string get_file();
 
   /* Destructor del contenedor de archivos. */
   ~FileContainer() {}
