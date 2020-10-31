@@ -13,7 +13,7 @@ class FileContainer {
 
  public:
   /* Init del contenedor de archivos. */
-  FileContainer() {}
+  FileContainer();
 
   /* Agrega el nombre del archivo a una cola de archivos. */
   void add_file(std::string file_name);
@@ -22,8 +22,16 @@ class FileContainer {
   esta vacia. */
   std::string get_file();
 
+  /* No se permiten copias. */
+  FileContainer& operator=(const FileContainer&) = delete;
+  FileContainer& operator=(FileContainer&&) = delete;
+
+  /* No se permiten constructores diferentes al default. */
+  FileContainer(const FileContainer&) = delete;
+  FileContainer(FileContainer&&) = delete;
+
   /* Destructor del contenedor de archivos. */
-  ~FileContainer() {}
+  ~FileContainer();
 };
 
 #endif  // FILE_CONTAINER_H

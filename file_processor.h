@@ -14,8 +14,8 @@ class FileProcessor : public Thread {
  private:
   FileReader f_reader;
   FileParser f_parser;
-  FileContainer &f_container;
-  ResultsContainer &results;
+  FileContainer& f_container;
+  ResultsContainer& results;
   std::string file;
 
   /* Ejecución principal del procesador de archivos. */
@@ -31,13 +31,21 @@ class FileProcessor : public Thread {
   /* Init del procesador de archivos, recibe un contenedor de archivos (de donde
   obtendrá los archivos para procesar) y un contenedor de resultados (en donde
   guardara lo obtenido). */
-  FileProcessor(FileContainer &fc, ResultsContainer &rs);
+  FileProcessor(FileContainer& fc, ResultsContainer& rs);
 
   /* Funcion a ejecutar cuando se inicialice un thread con FileProcessor. */
   void run() override;
 
+  /* No se permiten constructores diferentes al default. */
+  FileProcessor(const FileProcessor&) = delete;
+  FileProcessor(FileProcessor&&) = delete;
+
+  /* No se permiten copias. */
+  FileProcessor& operator=(const FileProcessor&) = delete;
+  FileProcessor& operator=(FileProcessor&&) = delete;
+
   /* Destructor del procesador de archivos. */
-  ~FileProcessor() {}
+  ~FileProcessor();
 };
 
 #endif  // FILE_PROCESSOR_H

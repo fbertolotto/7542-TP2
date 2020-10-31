@@ -14,7 +14,7 @@ class ResultsContainer {
 
  public:
   /* Init de Resultados */
-  ResultsContainer() {}
+  ResultsContainer();
 
   /* Agrega un resultado, recibe el nombre del archivo, si tuvo un loop y si
   tuvo alguna funcion sin utilizar. */
@@ -23,8 +23,16 @@ class ResultsContainer {
   /* Muestra por stdout los resultados que fueron almacenados. */
   void show_results();
 
+  /* No se permiten copias. */
+  ResultsContainer& operator=(const ResultsContainer&) = delete;
+  ResultsContainer& operator=(ResultsContainer&& other) = delete;
+
+  /* No se permiten constructores diferentes al default. */
+  ResultsContainer(const ResultsContainer&) = delete;
+  ResultsContainer(ResultsContainer&&) = delete;
+
   /* Destructor de Resultados. */
-  ~ResultsContainer() {}
+  ~ResultsContainer();
 };
 
 #endif  // RESULTS_CONTAINER_H

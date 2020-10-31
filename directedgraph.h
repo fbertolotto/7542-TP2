@@ -16,6 +16,7 @@ class DirectedGraph {
   std::set<int> path;
   bool loop;
   size_t size;
+
   /* Inicializa recorrido DFS del grafo */
   void dfs(int actual);
   /* Wrapper del dfs recursivo para iterar los nodos */
@@ -23,7 +24,7 @@ class DirectedGraph {
 
  public:
   /* Init del grafo, reciben un mapa con <linea: posibles saltos>. */
-  explicit DirectedGraph(const std::map<int, std::vector<int>> &graph);
+  explicit DirectedGraph(const std::map<int, std::vector<int>>& graph);
 
   /* Devuelve True si existe un loop en el grafo, False en caso contrario.
    Notar que siempre se comienza por la primer linea que exista. */
@@ -33,8 +34,16 @@ class DirectedGraph {
   caso contrario. (Si todas las lineas son accesibles desde la primera) */
   bool find_unused();
 
+  /* Se permiten copias. */
+  DirectedGraph(const DirectedGraph& other);
+  DirectedGraph& operator=(const DirectedGraph& other);
+  DirectedGraph& operator=(DirectedGraph&& other);
+
+  /* No se permite constructor por movimiento. */
+  DirectedGraph(DirectedGraph&&) = delete;
+
   /* Destructor del Grafo. */
-  ~DirectedGraph() {}
+  ~DirectedGraph();
 };
 
 #endif  // DIRECTED_GRAPH_H

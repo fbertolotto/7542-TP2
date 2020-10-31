@@ -2,6 +2,10 @@
 
 #include "results_container.h"
 
+ResultsContainer::ResultsContainer() {}
+
+ResultsContainer::~ResultsContainer() {}
+
 void ResultsContainer::add_result(std::string name, bool loop, bool unused) {
   m.lock();
   results[name].push_back(loop);

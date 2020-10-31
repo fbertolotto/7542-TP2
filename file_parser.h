@@ -20,22 +20,22 @@ class FileParser {
   std::set<int> newlines;
   std::map<int, size_t> line_size;
   /* Carga para una linea del archivo, todos los posibles saltos. */
-  void load_possible_jumps(const std::vector<std::string> &line);
+  void load_possible_jumps(const std::vector<std::string>& line);
 
  public:
   /* Init del parseador de archivos. */
-  FileParser() {}
+  FileParser();
 
   /* Primera ejecucion del parseador. Genera las tablas de simbolos
   necesarias para el parseo. */
-  void first_run(const std::string &line);
+  void first_run(const std::string& line);
 
-  /* Prepara el archivo para la segunda leida. */
+  /* Prepara el archivo para la segunda leída. */
   void set_second_run();
 
   /* Segunda ejecucion, analiza y parsea cada linea, para determinar
   los posibles saltos de cada una. */
-  void second_run(const std::string &line);
+  void second_run(const std::string& line);
 
   /* Limpia el parseador. */
   void clear();
@@ -43,8 +43,18 @@ class FileParser {
   /* Devuelve un mapa <linea : saltos> */
   std::map<int, std::vector<int>> get_jumps();
 
+  /* No se permiten constructores diferentes al default */
+  FileParser(const FileParser&) = delete;
+  FileParser(const FileParser&&) = delete;
+
+  /* No se permite copia por asignación. */
+  FileParser& operator=(const FileParser&) = delete;
+
+  /* Se permite copia por movimiento. */
+  FileParser& operator=(FileParser&& other);
+
   /* Destructor del parseador de archivos. */
-  ~FileParser() {}
+  ~FileParser();
 };
 
 #endif  // FILE_PARSER_H

@@ -10,7 +10,7 @@ class eBPF {
  private:
   FileContainer files;
   ResultsContainer rs;
-  std::vector<Thread *> threads;
+  std::vector<Thread*> threads;
 
  public:
   /* Init del eBPF, recibe la cantidad de threads que se quiere utilizar. */
@@ -24,6 +24,14 @@ class eBPF {
 
   /* Muestra los resultados obtenidos tras haber analizado los archivos. */
   void show_results();
+
+  /* No se permiten constructores diferentes al default. */
+  eBPF(const eBPF&) = delete;
+  eBPF(eBPF&&) = delete;
+
+  /* No se permiten copias. */
+  eBPF& operator=(const eBPF&) = delete;
+  eBPF& operator=(eBPF&&) = delete;
 
   /* Destructor del eBPF. */
   ~eBPF();

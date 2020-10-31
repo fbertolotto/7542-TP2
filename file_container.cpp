@@ -1,5 +1,9 @@
 #include "file_container.h"
 
+FileContainer::FileContainer() {}
+
+FileContainer::~FileContainer() {}
+
 void FileContainer::add_file(std::string file_name) {
   files.push_back(file_name);
 }

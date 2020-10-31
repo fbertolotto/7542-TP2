@@ -1,6 +1,11 @@
 #include "file_parser.h"
 
 #include <algorithm>
+#include <utility>
+
+FileParser::FileParser() {}
+
+FileParser::~FileParser() {}
 
 std::vector<std::string> split(std::string msg, std::string delimiter) {
   size_t init = 0, delim_pos;
@@ -80,6 +85,17 @@ void FileParser::second_run(const std::string &line) {
 void FileParser::set_second_run() { line_number = 0; }
 
 std::map<int, std::vector<int>> FileParser::get_jumps() { return jumps; }
+
+/* Copia por movimiento */
+FileParser& FileParser::operator=(FileParser &&other) {
+  this->line_number = other.line_number;
+  this->adresses = std::move(other.adresses);
+  this->jumps = std::move(other.jumps);
+  this->newlines = std::move(other.newlines);
+  this->line_size = std::move(other.line_size);
+  other.line_number = 0;
+  return *this;
+}
 
 void FileParser::clear() {
   adresses.clear();

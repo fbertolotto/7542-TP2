@@ -6,6 +6,8 @@
 FileProcessor::FileProcessor(FileContainer &fc, ResultsContainer &rs)
     : f_container(fc), results(rs) {}
 
+FileProcessor::~FileProcessor() {}
+
 void FileProcessor::run() {
   std::string file;
   while ((file = f_container.get_file()) != "") {
