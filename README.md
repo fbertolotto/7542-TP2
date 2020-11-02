@@ -48,7 +48,7 @@ Una vez obtenida la información necesaria de cada linea, es decir a donde puede
 
 ### Búsqueda de instrucciones sin utilizar
 
-Para saber si una instrucción no fue ejecutada, basta con comparar la cantidad de lineas visitadas por el recorrido DFS  con el tamaño original del archivo. Si existe una discrepancia significa que alguna linea es inaccesible (ya que siempre empiezo por la linea 1 del archivo). En otras palabras si el grafo tiene una sola componente conexa, todas las lineas son alcanzables; si no tiene una sola componente existen instrucción que no pueden ser accedidas a partir de la primera.
+Para saber si una instrucción no fue ejecutada, basta con comparar la cantidad de lineas visitadas por el recorrido DFS  con el tamaño original del archivo. Si existe una discrepancia significa que alguna linea es inaccesible (ya que siempre empiezo por la linea 1 del archivo). En otras palabras si el grafo tiene una sola componente conexa, todas las lineas son alcanzables; si no tiene una sola componente, existe al menos una instrucción que no pueden ser accedida a partir de la primera.
 
 ### Contenedor de Archivos Común
 
@@ -56,7 +56,7 @@ Como este archivo interactuá con varios hilos al mismo tiempo es posible provoc
 
 ### Contenedor de Resultados Común
 
-Al igual que el contenedor de archivos, los hilos intentaran guardar los resultados de manera simultanea. Para evitar en este caso un race condition, el objeto se bloque durante la carga de resultados para evitar cualquier tipo de interferencia de otros hilos. De esta manera garantizamos que la carga de resultados sea segura.
+Al igual que el contenedor de archivos, los hilos intentaran guardar los resultados de manera simultanea. Para evitar en este caso un race condition, el objeto se bloquea durante la carga de resultados para evitar cualquier tipo de interferencia de otros hilos. De esta manera se garantiza que la carga de resultados sea segura.
 
 ### Procesamiento multi-hilo
 
