@@ -1,16 +1,15 @@
-#include <set>
-
 #include "results_container.h"
+
+#include <set>
 
 ResultsContainer::ResultsContainer() {}
 
 ResultsContainer::~ResultsContainer() {}
 
 void ResultsContainer::add_result(std::string name, bool loop, bool unused) {
-  m.lock();
+  std::unique_lock<std::mutex> lock(m);
   results[name].push_back(loop);
   results[name].push_back(unused);
-  m.unlock();
 }
 
 void ResultsContainer::show_results() {

@@ -9,11 +9,8 @@ void FileContainer::add_file(std::string file_name) {
 }
 
 std::string FileContainer::get_file() {
-  m.lock();
-  if (files.empty()) {
-    m.unlock();
-    return "";
-  }
+  std::unique_lock<std::mutex> lock(m);
+  if (files.empty()) return "";
   std::string file = files.front();
   files.pop_front();
   m.unlock();
