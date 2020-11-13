@@ -13,6 +13,5 @@ std::string FileContainer::get_file() {
   if (files.empty()) return "";
   std::string file = files.front();
   files.pop_front();
-  m.unlock();
   return file;
 }
